@@ -25,5 +25,22 @@ addToCart.addEventListener("click", (event) => {
     let cart = JSON.parse(localStorage.getItem("cart"));
     if (cart === null) {
         cart = [];
-    } console.log(cart);
+    } 
+
+    // Recupere les données du produit
+    const product = {
+        id: id,
+        name: document.querySelector("#title").textContent,
+        price: document.querySelector("#price").textContent,
+        quantity: document.querySelector("#quantity").value,
+        color: document.querySelector("#colors").value,
+    }
+
+    // Ajoute le produit au panier dans le local storage si tout est ok
+    if (product.quantity > 0 && product.color !== '' && product.color !== null) {
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert("Produit ajouté au panier");
+        console.log(cart);
+    }
 });
