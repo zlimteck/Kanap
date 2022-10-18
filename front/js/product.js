@@ -36,6 +36,16 @@ addToCart.addEventListener("click", (event) => {
         color: document.querySelector("#colors").value,
     }
 
+    // Alerte si la quantité est inférieur à 1
+    if (product.quantity < 1) {
+        alert("Veuillez choisir une quantité");
+    };
+    
+    // Alerte si la couleur n'est pas choisie
+    if (product.color === '' || product.color == null) {
+        alert("Veuillez choisir une couleur");
+    };
+
     // Ajoute le produit au panier dans le local storage si tout est ok
     if (product.quantity > 0 && product.color !== '' && product.color !== null) {
         cart.push(product);
