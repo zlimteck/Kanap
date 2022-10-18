@@ -16,4 +16,14 @@ fetch("http://localhost:3000/api/products/" + id)
            document.querySelector("#colors").innerHTML += `<option value="${color}">${color}</option>`;
         });
         console.log(data);
-    });
+    })
+
+// Ecoute le click sur le bouton "Ajouter au panier"
+const addToCart = document.querySelector("#addToCart");
+addToCart.addEventListener("click", (event) => {
+    event.preventDefault();
+    let cart = JSON.parse(localStorage.getItem("cart"));
+    if (cart === null) {
+        cart = [];
+    } console.log(cart);
+});
