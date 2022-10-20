@@ -41,7 +41,7 @@ addToCart.addEventListener("click", (event) => {
         alert("Veuillez choisir une quantité");
     };
     
-    // Alerte si la couleur n'est pas choisie
+    // Alerte si une couleur n'est pas choisie
     if (product.color === '' || product.color == null) {
         alert("Veuillez choisir une couleur");
     };
@@ -52,5 +52,7 @@ addToCart.addEventListener("click", (event) => {
         localStorage.setItem("cart", JSON.stringify(cart));
         alert("Produit ajouté au panier");
         console.log(cart);
+        // Redirection vers la page panier
+        window.location.href = "cart.html";
     }
 });
