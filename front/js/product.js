@@ -57,6 +57,18 @@ addToCart.addEventListener("click", (event) => {
         localStorage.setItem("cart", JSON.stringify(cart));
         alert("Produit ajouté au panier");
         console.log(cart);
+        // Regroupe les produits identiques dans le panier
+        let cartGrouped = [];
+        cart.forEach((product) => {
+            let productFound = cartGrouped.find((productGrouped) => productGrouped.id === product.id && productGrouped.color === product.color); // Recherche si le produit existe déjà dans le panier
+            if (productFound) {
+                productFound.quantity = parseInt(productFound.quantity) + parseInt(product.quantity); // Si le produit existe déjà, on ajoute la quantité
+            } else {
+                cartGrouped.push(product); //Si le produit n'existe pas, on l'ajoute au panier
+            }
+        });
+        localStorage.setItem("cart", JSON.stringify(cartGrouped));
+        console.log(cartGrouped);
         // Redirection vers la page panier
         window.location.href = "cart.html";
     }
