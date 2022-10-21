@@ -40,6 +40,11 @@ addToCart.addEventListener("click", (event) => {
     if (product.quantity < 1) {
         alert("Veuillez choisir une quantité");
     };
+
+    // Alerte si la quantité est supérieur à 100
+    if (product.quantity > 100) {
+        alert("Veuillez choisir une qualité inferieur à 100");
+    };
     
     // Alerte si une couleur n'est pas choisie
     if (product.color === '' || product.color == null) {
@@ -47,7 +52,7 @@ addToCart.addEventListener("click", (event) => {
     };
 
     // Ajoute le produit au panier dans le local storage si tout est ok
-    if (product.quantity > 0 && product.color !== '' && product.color !== null) {
+    if (product.quantity > 0 && product.quantity <= 100 && product.color !== '' && product.color !== null) {
         cart.push(product);
         localStorage.setItem("cart", JSON.stringify(cart));
         alert("Produit ajouté au panier");
