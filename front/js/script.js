@@ -1,5 +1,4 @@
 //Recupération des produits via l'api
-
 fetch("http://localhost:3000/api/products") // Fetch les données depuis l'API.
 .then((response) => response.json()) // Transforme la réponse en JSON.
 .then((data) => {  // Récupère les données.
@@ -10,9 +9,8 @@ fetch("http://localhost:3000/api/products") // Fetch les données depuis l'API.
 });
 
 //Affichage des produits dans le DOM
-
 function listkanap(data){ // Fonction d'affichage des produits.
-    data.forEach(function(products, index){ // Création d'une boucle pour chaque produit.
+    data.forEach(function(products){ // Création d'une boucle pour chaque produit.
         document.querySelector("#items") // Sélection de la section "items".
         .innerHTML += `
         <a href="./product.html?_id=${products._id}"> 
