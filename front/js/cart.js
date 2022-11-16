@@ -7,7 +7,7 @@ if (cart === null) {
 //Fonction pour afficher les produits du panier.
 function DisplayCart() {
     cart.forEach((product) => {
-        console.table(product);
+        //console.table(product);
     }); //Boucle pour afficher les produits du panier.
     //Recuper les infos des produits et les afficher dans le DOM.
     fetch("http://localhost:3000/api/products") // Fetch les données depuis l'API.
