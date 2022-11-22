@@ -2,7 +2,7 @@
 fetch("http://localhost:3000/api/products") // Fetch les données depuis l'API.
 .then((response) => response.json()) // Transforme la réponse en JSON.
 .then((data) => {  // Récupère les données.
-    console.table(data); // Affichage des données dans la console sous forme de tableau.
+    //console.table(data); // Affichage des données dans la console sous forme de tableau.
     listkanap(data); // Appel de la fonction d'affichage "listkanap".
 }).catch((error) => {
     alert("Erreur, Nous rencontrons des problemes avec l'api."); // Affichage des erreurs dans une alerte.
