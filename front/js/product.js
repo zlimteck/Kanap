@@ -56,15 +56,18 @@ function ProductaddToCart() {
         if (product.quantity > 0 && product.quantity <= 100 && product.color !== '' && product.color !== null) {
             cart.push(product);
             localStorage.setItem("cart", JSON.stringify(cart));
-            alert("Produit ajouté au panier");
+            //alert("Produit ajouté au panier");
             //console.log(cart);
             let cartGrouped = []; //Regroupe les produits identiques dans le panier.
             cart.forEach((product) => {
                 let productFound = cartGrouped.find((productGrouped) => productGrouped.id === product.id && productGrouped.color === product.color); //Recherche si le produit existe déjà dans le panier.
-                if (productFound) {
-                    productFound.quantity = parseInt(productFound.quantity) + parseInt(product.quantity); //Si le produit existe déjà, on ajoute la quantité.
-                } else {
-                    cartGrouped.push(product); //Si le produit n'existe pas, on l'ajoute au panier.
+                //Si le produit a deja une quantité de 100, on ne peut pas ajouter plus.
+                if (productFound && productFound.quantity >= 100) {
+                    alert("Vous ne pouvez pas ajouter plus de 100 produits identiques dans le panier");
+                } else if (productFound) { //Si le produit existe déjà dans le panier, on ajoute la quantité.
+                    productFound.quantity = parseInt(productFound.quantity) + parseInt(product.quantity);
+                } else { //Si le produit n'existe pas dans le panier, on l'ajoute.
+                    cartGrouped.push(product);
                 }
             });
             localStorage.setItem("cart", JSON.stringify(cartGrouped));
