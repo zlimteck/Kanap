@@ -107,7 +107,11 @@ function updateCart() {
         });
     });
     localStorage.setItem("cart", JSON.stringify(products));
-    location.reload();
+    // Recharge les données du panier et le prix total sans recharger la page.
+    cart = JSON.parse(localStorage.getItem("cart"));
+    document.querySelector("#totalPrice").innerHTML = "";
+    document.querySelector("#totalQuantity").innerHTML = "";
+    DisplayTotal();
 }
 
 //Fonction pour Modifier la quantité d'un produit.
@@ -152,7 +156,7 @@ function sendOrder() {
         });
 
         //Verification du nom
-        if (firstName.length < 2 || !isNaN(firstName) || firstName.match(/[^a-zA-Z-çñàéèêëïîôüù - ]/)) { //
+        if (firstName.length < 2 || !isNaN(firstName) || firstName.match(/[^a-zA-Z-çñàéèêëïîôüù - ]/)) { 
             document.querySelector("#firstName").style.border = "2px solid red";
             document.querySelector("#firstNameErrorMsg").innerHTML = "Seuls les majuscules, minuscules, accents, tirets et espaces sont autorisés.";
             return false;
